@@ -1,0 +1,17 @@
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\bin\Debug\net8.0-windows\Proje_Hastane.exe
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\bin\Debug\net8.0-windows\Proje_Hastane.deps.json
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\bin\Debug\net8.0-windows\Proje_Hastane.runtimeconfig.json
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\bin\Debug\net8.0-windows\Proje_Hastane.dll
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\bin\Debug\net8.0-windows\Proje_Hastane.pdb
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\obj\Debug\net8.0-windows\Proje_Hastane.Form1.resources
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\obj\Debug\net8.0-windows\Proje_Hastane.Properties.Resources.resources
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\obj\Debug\net8.0-windows\Proje_Hastane.csproj.GenerateResource.cache
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\obj\Debug\net8.0-windows\Proje_Hastane.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\obj\Debug\net8.0-windows\Proje_Hastane.AssemblyInfoInputs.cache
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\obj\Debug\net8.0-windows\Proje_Hastane.AssemblyInfo.cs
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\obj\Debug\net8.0-windows\Proje_Hastane.csproj.CoreCompileInputs.cache
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\obj\Debug\net8.0-windows\Proje_Hastane.dll
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\obj\Debug\net8.0-windows\refint\Proje_Hastane.dll
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\obj\Debug\net8.0-windows\Proje_Hastane.pdb
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\obj\Debug\net8.0-windows\Proje_Hastane.genruntimeconfig.cache
+C:\Users\DELL\OneDrive\Masaüstü\oop2udemy\Proje_Hastane\obj\Debug\net8.0-windows\ref\Proje_Hastane.dll
