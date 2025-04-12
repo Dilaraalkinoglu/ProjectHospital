@@ -39,6 +39,8 @@ namespace Proje_Hastane
             SqlDataReader dr = komut.ExecuteReader();
             if (dr.Read())
             {
+
+                // Hasta Detay Formuna Geçiş
                 FrmHastaDetay fr = new FrmHastaDetay();
                 fr.tc = MskTC.Text;
                 fr.Show();
