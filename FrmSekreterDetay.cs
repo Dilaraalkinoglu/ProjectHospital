@@ -82,5 +82,20 @@ namespace Proje_Hastane
                 cmbDoktor.Items.Add(dr[0] + " " + dr[1]);
             }
         }
+
+        private void btnDuyuruOlustur_Click(object sender, EventArgs e)
+        {
+            SqlCommand komut = new SqlCommand("insert into Table_Duyurular (duyuru) values (@d1)", bgl.baglanti());
+            komut.Parameters.AddWithValue("@d1", rchDuyuru.Text);
+            komut.ExecuteNonQuery();
+            bgl.baglanti().Close();
+            MessageBox.Show("Duyuru oluşturuldu.");
+        }
+
+        private void btnDoktorPanel_Click(object sender, EventArgs e)
+        {
+            FrmDoktorPanel drp = new FrmDoktorPanel();
+            drp.Show();  
+        }
     }
 }
