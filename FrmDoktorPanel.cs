@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
 
 namespace Proje_Hastane
 {
-    public partial class FrmDoktorPaneli : Form
+    public partial class FrmDoktorPanel : Form
     {
-        public FrmDoktorPaneli()
+        public FrmDoktorPanel()
         {
             InitializeComponent();
         }
@@ -29,11 +30,11 @@ namespace Proje_Hastane
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            comboBox1 = new ComboBox();
-            maskedTextBox1 = new MaskedTextBox();
-            maskedTextBox2 = new MaskedTextBox();
+            txtAd = new TextBox();
+            txtSoyad = new TextBox();
+            cmbBrans = new ComboBox();
+            mskTC = new MaskedTextBox();
+            mskSifre = new MaskedTextBox();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
@@ -86,43 +87,43 @@ namespace Proje_Hastane
             label5.TabIndex = 4;
             label5.Text = "Şifre:";
             // 
-            // textBox1
+            // txtAd
             // 
-            textBox1.Location = new Point(117, 26);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 36);
-            textBox1.TabIndex = 5;
+            txtAd.Location = new Point(117, 26);
+            txtAd.Name = "txtAd";
+            txtAd.Size = new Size(125, 36);
+            txtAd.TabIndex = 5;
             // 
-            // textBox2
+            // txtSoyad
             // 
-            textBox2.Location = new Point(117, 68);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 36);
-            textBox2.TabIndex = 6;
+            txtSoyad.Location = new Point(117, 68);
+            txtSoyad.Name = "txtSoyad";
+            txtSoyad.Size = new Size(125, 36);
+            txtSoyad.TabIndex = 6;
             // 
-            // comboBox1
+            // cmbBrans
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(117, 115);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(125, 36);
-            comboBox1.TabIndex = 7;
+            cmbBrans.FormattingEnabled = true;
+            cmbBrans.Location = new Point(117, 115);
+            cmbBrans.Name = "cmbBrans";
+            cmbBrans.Size = new Size(125, 36);
+            cmbBrans.TabIndex = 7;
             // 
-            // maskedTextBox1
+            // mskTC
             // 
-            maskedTextBox1.Location = new Point(117, 157);
-            maskedTextBox1.Mask = "00000000000";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(125, 36);
-            maskedTextBox1.TabIndex = 8;
-            maskedTextBox1.ValidatingType = typeof(int);
+            mskTC.Location = new Point(117, 157);
+            mskTC.Mask = "00000000000";
+            mskTC.Name = "mskTC";
+            mskTC.Size = new Size(125, 36);
+            mskTC.TabIndex = 8;
+            mskTC.ValidatingType = typeof(int);
             // 
-            // maskedTextBox2
+            // mskSifre
             // 
-            maskedTextBox2.Location = new Point(117, 201);
-            maskedTextBox2.Name = "maskedTextBox2";
-            maskedTextBox2.Size = new Size(125, 36);
-            maskedTextBox2.TabIndex = 9;
+            mskSifre.Location = new Point(117, 201);
+            mskSifre.Name = "mskSifre";
+            mskSifre.Size = new Size(125, 36);
+            mskSifre.TabIndex = 9;
             // 
             // button1
             // 
@@ -133,6 +134,7 @@ namespace Proje_Hastane
             button1.TabIndex = 10;
             button1.Text = "Ekle";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -153,6 +155,7 @@ namespace Proje_Hastane
             button3.TabIndex = 12;
             button3.Text = "Güncelle";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // dataGridView1
             // 
@@ -160,28 +163,32 @@ namespace Proje_Hastane
             dataGridView1.Location = new Point(260, 26);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(331, 294);
+            dataGridView1.Size = new Size(783, 294);
             dataGridView1.TabIndex = 13;
+            dataGridView1.CellClick += dataGridView1_CellClick;
+           
             // 
-            // FrmDoktorPaneli
+            // FrmDoktorPanel
             // 
-            ClientSize = new Size(644, 366);
+            ClientSize = new Size(1068, 366);
             Controls.Add(dataGridView1);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(maskedTextBox2);
-            Controls.Add(maskedTextBox1);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(mskSifre);
+            Controls.Add(mskTC);
+            Controls.Add(cmbBrans);
+            Controls.Add(txtSoyad);
+            Controls.Add(txtAd);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Font = new Font("Corbel", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            Name = "FrmDoktorPaneli";
+            Name = "FrmDoktorPanel";
+            Text = "FrmDoktorPaneli";
+            Load += FrmDoktorPaneli_Load;
             ((ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -192,14 +199,57 @@ namespace Proje_Hastane
         private Label label3;
         private Label label4;
         private Label label5;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private ComboBox comboBox1;
-        private MaskedTextBox maskedTextBox1;
-        private MaskedTextBox maskedTextBox2;
+        private TextBox txtAd;
+        private TextBox txtSoyad;
+        private ComboBox cmbBrans;
+        private MaskedTextBox mskTC;
+        private MaskedTextBox mskSifre;
         private Button button1;
         private Button button2;
         private Button button3;
         private DataGridView dataGridView1;
+
+
+        SqlBaglantisi bgl = new SqlBaglantisi();
+        private void FrmDoktorPaneli_Load(object sender, EventArgs e)
+        {
+            //Doktorları listeye aktarma 
+            DataTable dt1 = new DataTable();
+            SqlDataAdapter da1 = new SqlDataAdapter("Select * From Table_Doktorlar", bgl.baglanti());
+            da1.Fill(dt1);
+            dataGridView1.DataSource = dt1;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SqlCommand komut = new SqlCommand("insert into Table_Doktorlar (DoktorAd, DoktorSoyad, DoktorBrans,DoktorTC,DoktorSifre) values (@d1,@d2,@d3,@d4,@d5)", bgl.baglanti());
+            komut.Parameters.AddWithValue("@d1", txtAd.Text);
+            komut.Parameters.AddWithValue("@d2", txtSoyad.Text);
+            komut.Parameters.AddWithValue("@d3", cmbBrans.Text);
+            komut.Parameters.AddWithValue("@d4", mskTC.Text);
+            komut.Parameters.AddWithValue("@d5", mskSifre.Text);
+            komut.ExecuteNonQuery();
+            bgl.baglanti().Close();
+            MessageBox.Show("Doktor sisteme eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+    
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int secilen = dataGridView1.SelectedCells[0].RowIndex;
+            txtAd.Text = dataGridView1.Rows[secilen].Cells[1].Value.ToString();
+            txtSoyad.Text = dataGridView1.Rows[secilen].Cells[2].Value.ToString();
+            cmbBrans.Text = dataGridView1.Rows[secilen].Cells[3].Value.ToString();
+            mskTC.Text = dataGridView1.Rows[secilen].Cells[4].Value.ToString();
+            mskSifre.Text = dataGridView1.Rows[secilen].Cells[5].Value.ToString();
+
+        }
     }
 }
