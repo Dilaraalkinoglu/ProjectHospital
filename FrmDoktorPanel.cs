@@ -108,6 +108,7 @@ namespace Proje_Hastane
             cmbBrans.Name = "cmbBrans";
             cmbBrans.Size = new Size(125, 36);
             cmbBrans.TabIndex = 7;
+
             // 
             // mskTC
             // 
@@ -145,6 +146,7 @@ namespace Proje_Hastane
             button2.TabIndex = 11;
             button2.Text = "Sil";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -166,7 +168,6 @@ namespace Proje_Hastane
             dataGridView1.Size = new Size(783, 294);
             dataGridView1.TabIndex = 13;
             dataGridView1.CellClick += dataGridView1_CellClick;
-           
             // 
             // FrmDoktorPanel
             // 
@@ -218,10 +219,29 @@ namespace Proje_Hastane
             SqlDataAdapter da1 = new SqlDataAdapter("Select * From Table_Doktorlar", bgl.baglanti());
             da1.Fill(dt1);
             dataGridView1.DataSource = dt1;
+
+
+            //Branşı combobox'a aktarma 
+            SqlCommand komut2 = new SqlCommand("Select BransAd From Table_Branslar", bgl.baglanti());
+            SqlDataReader dr2 = komut2.ExecuteReader();
+            while (dr2.Read())
+            {
+                cmbBrans.Items.Add(dr2[0]);
+            }
+            bgl.baglanti().Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            SqlCommand komut = new SqlCommand("UPDATE Table_Doktorlar SET DoktorAd=@d1, DoktorSoyad=@d2, DoktorBrans=@d3, DoktorSifre=@d5 WHERE DoktorTC=@d4", bgl.baglanti());
+            komut.Parameters.AddWithValue("@d1", txtAd.Text);
+            komut.Parameters.AddWithValue("@d2", txtSoyad.Text);
+            komut.Parameters.AddWithValue("@d3", cmbBrans.Text);
+            komut.Parameters.AddWithValue("@d4", mskTC.Text);
+            komut.Parameters.AddWithValue("@d5", mskSifre.Text);
+            komut.ExecuteNonQuery();
+            bgl.baglanti().Close();
+            MessageBox.Show("Doktor güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
@@ -239,7 +259,7 @@ namespace Proje_Hastane
 
         }
 
-    
+
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -251,5 +271,18 @@ namespace Proje_Hastane
             mskSifre.Text = dataGridView1.Rows[secilen].Cells[5].Value.ToString();
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SqlCommand komut = new SqlCommand("Delete From Table_Doktorlar where DoktorTC=@d1", bgl.baglanti());
+            komut.Parameters.AddWithValue("@d1", mskTC.Text);
+            komut.ExecuteNonQuery();
+            bgl.baglanti().Close();
+            MessageBox.Show("Kayıt silindi.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+        }
+
+
+
     }
 }
