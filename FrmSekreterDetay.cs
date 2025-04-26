@@ -95,7 +95,25 @@ namespace Proje_Hastane
         private void btnDoktorPanel_Click(object sender, EventArgs e)
         {
             FrmDoktorPanel drp = new FrmDoktorPanel();
-            drp.Show();  
+            drp.Show();
+        }
+
+        private void btnBransPanel_Click(object sender, EventArgs e)
+        {
+            FrmBrans frmBR = new FrmBrans();
+            frmBR.Show();
+        }
+
+        private void btnRandevuListe_Click(object sender, EventArgs e)
+        {
+            FrmRandevuListesi frmRandevuListesi = new FrmRandevuListesi();
+            frmRandevuListesi.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmDuyurular frmDuyurular = new FrmDuyurular();
+            frmDuyurular.Show();
         }
     }
 }
